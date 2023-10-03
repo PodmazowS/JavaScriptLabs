@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab1</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div>
+                <form>
+                    <div id="inputForm" onchange="calculate()">
+                        <label>First number:</label><br>
+                        <input id="input" type="number" value="0"><br>
+                        <label>Second number:</label><br>
+                        <input id="input" type="number" value="0"><br>
+                        <label>Third number:</label><br>
+                        <input id="input" type="number" value="0"><br>
+                    </div>
+                </form>
+                <button id="calculate">Count</button>
+                <button onclick="addInput()">Add input</button>
+                <button onclick="removeInput(), calculate()">Remove input</button>
+            </div>
+        </div>
+        </div class="output">
+        <form>
+            <label>Sum:</label> <br>
+            <input id="sum" type="text" value="" readonly="readonly"> <br>
+            <label>Avg:</label> <br>
+            <input id="avg" type="text" value="" readonly="readonly"><br>
+            <label>Min number:</label> <br>
+            <input id="min" type="text" value="" readonly="readonly"> <br>
+            <label>Max number:</label></label> <br>
+            <input id="max" type="text" value="" readonly="readonly"> <br>
+        </form>
+        </div>
+    </main>
+    <script type="text/javascript">
+        const mainContainer = document.querySelector('.container')
+        const inputForm = document.querySelector('#inputForm')
+        const calculateButton = document.querySelector('#calculate')
+        const sumText = document.querySelector('#sum')
+        const avgText = document.querySelector("#avg")
+        const maxText = document.querySelector("#max")
+        const minText = document.querySelector("#min")
+
+
+
+        function addInput() {
+            let input = document.createElement('input');
+            input.setAttribute("id", "input");
+            input.setAttribute("type", "number");
+            input.setAttribute("value", 0);
+            inputForm.append(input);
+        };
+        function removeInput() {
+            let allInputs = document.querySelectorAll('#input');
+            if (allInputs.length > 3) {
+                let lastInput = allInputs[allInputs.length - 1];
+                inputForm.removeChild(lastInput);
+            }
+        }
+        function calculate() {
+            const allInputs = document.querySelectorAll('#input');
+            let sum = 0;
+            let avg = 0;
+            const tab = [];
+            allInputs.forEach(element => {
+                tab.push(Number(element.value));
+                sum += Number(element.value);
+                avg = sum / allInputs.length;
+            });
+            sumText.value = sum;
+            avgText.value = avg;
+
+            maxText.value = Math.max(...tab);
+            minText.value = Math.min(...tab);
+
+        }
+
+        calculateButton.addEventListener('click', function () {
+            calculate();
+        });
+    </script>
+</body>
+
+</html>

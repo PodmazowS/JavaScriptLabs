@@ -1,0 +1,10 @@
+.container{
+    align-content: center;
+    margin-top: 25px;
+    margin-right: auto;
+}
+
+.container #calculate{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
