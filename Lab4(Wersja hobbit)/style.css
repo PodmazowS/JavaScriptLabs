@@ -1,0 +1,13 @@
+.note {
+    margin-bottom: 2em;
+}
+
+.note .card {
+    position: relative;
+}
+
+.note .pin {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
