@@ -7,11 +7,14 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="weather">
-    <input type="text" id="cityInput" placeholder="Wpisz nazwę miasta">
-    <button onclick="getWeather()">Pokaż Pogodę</button>
-    <div id="weatherDetails"></div>
-</div>
+    <div id="weather">
+        <form id="addCityForm">
+            <input type="text" id="cityInput" placeholder="Wpisz nazwę miasta" required>
+            <button type="submit">Dodaj Miasto</button>
+        </form>
+        <ul id="weatherList"></ul>
+    </div>
+    
 
 <script src="main.js"></script>
 </body>

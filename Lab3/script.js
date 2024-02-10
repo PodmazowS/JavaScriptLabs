@@ -1,6 +1,10 @@
 let isRecording = false;
 let dbSongs = [];
 
+/**
+ * Represents a mapping of keys to corresponding sounds.
+ * @type {Object.<string, string>}
+ */
 const KeyToSound = {
   b: "b",
   c: "c",
@@ -35,6 +39,11 @@ function playSound(soundElement) {
   soundElement.play();
 }
 
+/**
+ * Plays the recorded sounds from the database.
+ * 
+ * @returns {Promise<void>} A promise that resolves when all the sounds have been played.
+ */
 async function playRecordedSounds() {
   if (!isRecording && dbSongs.length > 0) {
     for (const song of dbSongs) {

@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
       slides.forEach((s, i) => s.style.transform = `translateX(${(i - slide) * 100}%)`);
     };
   
+    /**
+     * Advances to the next slide.
+     */
     const nextSlide = () => {
       curSlide = curSlide === slides.length - 1 ? 0 : curSlide + 1;
       goToSlide(curSlide);

@@ -1,3 +1,4 @@
+<!-- FILEPATH: /c:/Users/spodmazo/OneDrive - Cisco/Desktop/JavaScriptLabs/Lab1/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +15,7 @@
         <div class="container">
             <div>
                 <form>
+                    <!-- Input form for numbers -->
                     <div id="inputForm" onchange="calculate()">
                         <label>First number:</label><br>
                         <input id="input" type="number" value="0"><br>
@@ -23,13 +25,17 @@
                         <input id="input" type="number" value="0"><br>
                     </div>
                 </form>
+                <!-- Button to calculate sum, average, min, and max -->
                 <button id="calculate">Count</button>
+                <!-- Button to add an additional input field -->
                 <button onclick="addInput()">Add input</button>
+                <!-- Button to remove the last input field and recalculate -->
                 <button onclick="removeInput(), calculate()">Remove input</button>
             </div>
         </div>
         </div class="output">
         <form>
+            <!-- Output fields for sum, average, min, and max -->
             <label>Sum:</label> <br>
             <input id="sum" type="text" value="" readonly="readonly"> <br>
             <label>Avg:</label> <br>
@@ -42,16 +48,22 @@
         </div>
     </main>
     <script type="text/javascript">
+        // Get the main container element
         const mainContainer = document.querySelector('.container')
+        // Get the input form element
         const inputForm = document.querySelector('#inputForm')
+        // Get the calculate button element
         const calculateButton = document.querySelector('#calculate')
+        // Get the sum text input element
         const sumText = document.querySelector('#sum')
+        // Get the average text input element
         const avgText = document.querySelector("#avg")
+        // Get the max text input element
         const maxText = document.querySelector("#max")
+        // Get the min text input element
         const minText = document.querySelector("#min")
 
-
-
+        // Function to add an additional input field
         function addInput() {
             let input = document.createElement('input');
             input.setAttribute("id", "input");
@@ -59,6 +71,8 @@
             input.setAttribute("value", 0);
             inputForm.append(input);
         };
+
+        // Function to remove the last input field
         function removeInput() {
             let allInputs = document.querySelectorAll('#input');
             if (allInputs.length > 3) {
@@ -66,6 +80,8 @@
                 inputForm.removeChild(lastInput);
             }
         }
+
+        // Function to calculate the sum, average, min, and max
         function calculate() {
             const allInputs = document.querySelectorAll('#input');
             let sum = 0;
@@ -81,9 +97,9 @@
 
             maxText.value = Math.max(...tab);
             minText.value = Math.min(...tab);
-
         }
 
+        // Event listener for the calculate button
         calculateButton.addEventListener('click', function () {
             calculate();
         });
