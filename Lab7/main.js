@@ -26,7 +26,7 @@ function getWeather(city) {
         .catch(error => console.error("Błąd: ", error));
 }
 
-// Funkcja do dodawania miasta do localStorage
+
 function addCityToStorage(city) {
     let cities = JSON.parse(localStorage.getItem('cities')) || [];
     if (cities.length < 10) {
@@ -37,28 +37,26 @@ function addCityToStorage(city) {
     }
 }
 
-// Funkcja do usuwania miasta z listy i localStorage
 function removeCity(city) {
     let cities = JSON.parse(localStorage.getItem('cities')) || [];
     cities = cities.filter(c => c !== city);
     localStorage.setItem('cities', JSON.stringify(cities));
-    loadCities(); // Odśwież listę miast
+    loadCities(); 
 }
 
-// Funkcja do ładowania miast z localStorage i wyświetlania ich na liście
 function loadCities() {
     const cities = JSON.parse(localStorage.getItem('cities')) || [];
     const weatherList = document.getElementById('weatherList');
-    weatherList.innerHTML = ''; // Wyczyść listę przed ponownym załadowaniem
+    weatherList.innerHTML = ''; // Wyczyczanie listy przed ponownym załadowaniem
     cities.forEach(city => getWeather(city));
 }
 
-// Dodaj obsługę zdarzenia dla formularza dodawania miasta
+
 document.getElementById('addCityForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const cityInput = document.getElementById('cityInput');
     getWeather(cityInput.value);
-    cityInput.value = ''; // Wyczyść pole po dodaniu miasta
+    cityInput.value = ''; 
 });
 
 // Załaduj miasta przy starcie aplikacji

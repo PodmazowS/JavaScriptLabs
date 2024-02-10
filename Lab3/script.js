@@ -39,16 +39,18 @@ function playSound(soundElement) {
   soundElement.play();
 }
 
-/**
- * Plays the recorded sounds from the database.
- * 
- * @returns {Promise<void>} A promise that resolves when all the sounds have been played.
- */
+
+
+
 async function playRecordedSounds() {
   if (!isRecording && dbSongs.length > 0) {
+    let previousTime = dbSongs[0].time; 
+
     for (const song of dbSongs) {
-      console.log("timeout");
-      await new Promise(resolve => setTimeout(resolve, song.time));
+      const delay = song.time - previousTime;
+      previousTime = song.time; 
+
+      await new Promise(resolve => setTimeout(resolve, delay)); 
       playSound(song.sound);
     }
   }

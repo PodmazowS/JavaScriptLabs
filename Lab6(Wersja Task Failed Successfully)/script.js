@@ -6,7 +6,8 @@ canvas.height = window.innerHeight;
 let mouse = {
   x: null,
   y: null,
-  radius: 50
+  radius: 10
+  
 };
 
 canvas.addEventListener('mousemove', (event) => {
